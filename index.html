@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" href="icon.png" type="image/png">
+    <link rel="icon" href="icon.png" type="image/png">
     <title>Interaktív Magyarország Térkép</title>
     <style>
         #map {
@@ -73,6 +73,12 @@
             margin-right: 10px;
             border-radius: 4px;
         }
+        .factory-icon {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -137,79 +143,80 @@
     };
 
     const countyPositions = {
-            'Fiume - város': { left: '1.5px', top: '380.5px', info: 'Fiume - város', attributes: ['kikötő'], owner: 'Zente' },
-    'Modrus-Fiume': { left: '1.5px', top: '360.5px', info: 'Modrus-Fiume', attributes: ['élelmiszeripar', 'gépgyártás', 'kikötő'], owner: 'Zente' },
-    'Lika-Krbava': { left: '30.5px', top: '415.5px', info: 'Lika-Krbava', attributes: ['kikötő', 'fa'], owner: 'Zente' },
-    'Zágráb': { left: '60.5px', top: '329.5px', info: 'Zágráb', attributes: ['könnyűipar', 'élelmiszeripar'], owner: 'Zente' },
-    'Varasd': { left: '84.5px', top: '298.5px', info: 'Varasd', attributes: ['szőlő/bor', 'fa', 'szén'], owner: null },
-    'Belovár-Kőrós': { left: '127.5px', top: '317.5px', info: 'Belovár-Kőrós', attributes: ['élelmiszeripar', 'vas-és fémipar', 'szőlő/bor', 'fa', 'kukorica'], owner: 'Zente' },
-    'Pozsega': { left: '154.5px', top: '366.5px', info: 'Pozsega', attributes: ['fa', 'búza', 'kukorica'], owner: 'Zente' },
-    'Verőcze': { left: '187.5px', top: '342.5px', info: 'Verőcze', attributes: ['fa', 'búza'], owner: null },
-    'Szerém': { left: '261px', top: '391.5px', info: 'Szerém', attributes: ['szőlő/bor', 'fa', 'búza'], owner: 'Samu' },
-    'Baranya': { left: '222.5px', top: '303.5px', info: 'Baranya', attributes: ['könnyűipar', 'vas-és fémipar', 'egyetem', 'szőlő/bor', 'szén'], owner: null },
-    'Tolna': { left: '239.5px', top: '258.5px', info: 'Tolna', attributes: ['szőlő/bor'], owner: null },
-    'Somogy': { left: '165.5px', top: '255.5px', info: 'Somogy', attributes: ['szőlő/bor', 'cukor', 'állat'], owner: null },
-    'Zala': { left: '122.5px', top: '232.5px', info: 'Zala', attributes: ['szőlő/bor'], owner: 'Geri' },
-    'Vas': { left: '111.5px', top: '194px', info: 'Vas', attributes: ['gépgyártás', 'cukor', 'vasérc'], owner: 'Geri' },
-    'Veszprém': { left: '188.5px', top: '193.5px', info: 'Veszprém', attributes: ['szőlő/bor', 'kukorica'], owner: 'Geri' },
-    'Fejér': { left: '244.5px', top: '194.5px', info: 'Fejér', attributes: ['gépgyártás', 'búza', 'állat'], owner: null },
-    'Komárom': { left: '220.5px', top: '147.5px', info: 'Komárom', attributes: ['szőlő/bor', 'szén'], owner: 'Geri' },
-    'Esztergom': { left: '264.5px', top: '149.5px', info: 'Esztergom', attributes: ['szén'], owner: 'Geri' },
-    'Győr': { left: '197.5px', top: '161.5px', info: 'Győr', attributes: ['gépgyártás'], owner: 'Geri' },
-    'Sopron': { left: '131.5px', top: '152.5px', info: 'Sopron', attributes: ['cukor'], owner: 'Geri' },
-    'Moson': { left: '160px', top: '136.5px', info: 'Moson', attributes: ['gépgyártás', 'búza'], owner: 'Geri' },
-    'Pozsony': { left: '171.5px', top: '89.5px', info: 'Pozsony', attributes: ['könnyűipar', 'egyetem', 'cukor'], owner: 'Geri' },
-    'Nyitra': { left: '180.5px', top: '60.5px', info: 'Nyitra', attributes: ['cukor'], owner: 'Geri' },
-    'Bars': { left: '257.5px', top: '79.5px', info: 'Bars', attributes: ['fa', 'búza'], owner: 'Geri' },
-    'Hont': { left: '283.5px', top: '105.5px', info: 'Hont', attributes: ['élelmiszeripar', 'vas-és fémipar'], owner: null },
-    'Zólyom': { left: '300.96px', top: '64.5px', info: 'Zólyom', attributes: ['könnyűipar', 'arany'], owner: 'Geri' },
-    'Trencsén': { left: '223.5px', top: '9.5px', info: 'Trencsén', attributes: ['állat', 'szén'], owner: 'Geri' },
-    'Árva': { left: '310.5px', top: '1.5px', info: 'Árva', attributes: ['fa', 'szén'], owner: 'Geri' },
-    'Liptó': { left: '310.5px', top: '34.5px', info: 'Liptó', attributes: ['fa'], owner: 'Geri' },
-    'Szepes': { left: '367px', top: '15.5px', info: 'Szepes', attributes: ['arany', 'állat', 'vasérc'], owner: 'Zalán' },
-    'Sáros': { left: '408px', top: '16.5px', info: 'Sáros', attributes: ['fa', 'arany'], owner: 'Zalán' },
-    'Zemplén': { left: '423px', top: '22.5px', info: 'Zemplén', attributes: ['szőlő/bor'], owner: 'Boti' },
-    'Ung': { left: '478.5px', top: '48px', info: 'Ung', attributes: ['fa', 'állat'], owner: null },
-    'Bereg': { left: '500px', top: '64.5px', info: 'Bereg', attributes: ['szőlő/bor', 'búza'], owner: 'Ákos' },
-    'Szatmár': { left: '495.5px', top: '136.5px', info: 'Szatmár', attributes: ['búza', 'kukorica', 'állat'], owner: 'Ákos' },
-    'Szabolcs': { left: '428.5px', top: '112.5px', info: 'Szabolcs', attributes: ['egyetem'], owner: 'Ákos' },
-    'Hajdú': { left: '413.5px', top: '158.5px', info: 'Hajdú', attributes: ['könnyűipar', 'élelmiszeripar', 'gépgyártás', 'állat'], owner: null },
-    'Nógrád': { left: '301.5px', top: '92px', info: 'Nógrád', attributes: ['vas-és fémipar', 'szén', 'vasérc'], owner: null },
-    'Borsod': { left: '368.5px', top: '107.86px', info: 'Borsod', attributes: ['vas-és fémipar', 'szén', 'vasérc'], owner: 'Geri' },
-    'Heves': { left: '342.5px', top: '139.5px', info: 'Heves', attributes: ['szőlő/bor', 'szén'], owner: null },
-    'Jász-Nagykun-Szolnok': { left: '344.5px', top: '185.5px', info: 'Jász-Nagykun-Szolnok', attributes: ['gépgyártás', 'búza', 'kukorica'], owner: null },
-    'Pest-Pilis-Solt-Kiskun': { left: '282.5px', top: '167px', info: 'Pest-Pilis-Solt-Kiskun', attributes: ['gépgyártás', 'egyetem', 'cukor', 'búza', 'kukorica'], owner: 'Barna' },
-    'Csongrád': { left: '343.5px', top: '266px', info: 'Csongrád', attributes: ['könnyűipar', 'búza', 'állat'], owner: null },
-    'Csanád': { left: '387.5px', top: '287.5px', info: 'Csanád', attributes: ['cukor', 'búza', 'kukorica', 'állat'], owner: 'Samu' },
-    'Békés': { left: '387px', top: '229.5px', info: 'Békés', attributes: ['búza', 'kukorica', 'állat'], owner: null },
-    'Bács-Bodrog': { left: '292.5px', top: '306.5px', info: 'Bács-Bodrog', attributes: ['szőlő/bor', 'cukor', 'búza', 'kukorica', 'állat'], owner: null },
-    'Torontál': { left: '368.5px', top: '318.5px', info: 'Torontál', attributes: ['búza', 'kukorica'], owner: 'Samu' },
-    'Temes': { left: '417.5px', top: '325.5px', info: 'Temes', attributes: ['gépgyártás', 'szén'], owner: 'Samu'  },
-    'Hunyad': { left: '516.5px', top: '305px', info: 'Hunyad', attributes: ['vas-és fémipar', 'arany', 'állat', 'vasérc'], owner: 'Kolos' },
-    'Arad': { left: '418.5px', top: '273px', info: 'Arad', attributes: ['gépgyártás', 'szőlő/bor', 'búza', 'állat'], owner: null  },
-    'Bihar': { left: '430.92px', top: '191.5px', info: 'Bihar', attributes: ['élelmiszeripar', 'cukor', 'állat'], owner: null },
-    'Szilágy': { left: '508.5px', top: '185px', info: 'Szilágy', attributes: ['fa', 'búza', 'kukorica'], owner: null },
-    'Szolnok-Doboka': { left: '571.5px', top: '179.5px', info: 'Szolnok-Doboka', attributes: ['vas-és fémipar', 'fa', 'búza'], owner: null },
-    'Máramaros': { left: '559.5px', top: '78.5px', info: 'Máramaros', attributes: ['arany', 'állat'], owner: 'Ákos' },
-    'Beszterce-Naszód': { left: '626px', top: '181px', info: 'Beszterce-Naszód', attributes: ['fa'], owner: 'Boti' },
-    'Kolozs': { left: '531px', top: '233px', info: 'Kolozs', attributes: ['könnyűipar', 'egyetem'], owner: 'Kolos' },
-    'Torda-Aranyos': { left: '533.5px', top: '268px', info: 'Torda-Aranyos', attributes: ['arany', 'állat'], owner: 'Kolos' },
-    'Alsó-Fehér': { left: '550.5px', top: '291px', info: 'Alsó-Fehér', attributes: ['szőlő/bor', 'arany', 'állat'], owner: null },
-    'Szeben': { left: '585.5px', top: '332px', info: 'Szeben', attributes: ['vas-és fémipar', 'szén'], owner: 'Kolos' },
-    'Fogaras': { left: '647px', top: '331.5px', info: 'Fogaras', attributes: ['állat'], owner: 'Boti' },
-    'Kis-Küküllő': { left: '610.5px', top: '286.5px', info: 'Kis-Küküllő', attributes: ['szőlő/bor', 'búza'], owner: null },
-    'Udvarhely': { left: '665.5px', top: '269.5px', info: 'Udvarhely', attributes: ['búza', 'kukorica'], owner: 'Kolos' },
-    'Háromszék': { left: '715px', top: '300.5px', info: 'Háromszék', attributes: ['fa'], owner: 'Kolos' },
-    'Csík': { left: '694px', top: '220px', info: 'Csík', attributes: ['fa'], owner: 'Kolos' },
-    'Maros-Torda': { left: '628.5px', top: '225.5px', info: 'Maros-Torda', attributes: ['könnyűipar', 'gépgyártás', 'állat'], owner: 'Kolos' },
-    'Budapest': { left: '299.5px', top: '192px', info: 'Budapest', attributes: ['gépgyártás', 'egyetem', 'cukor', 'búza', 'kukorica'], owner: 'Barna' },
-    'Ugocsa': { left: '537px', top: '121.5px', info: 'Ugocsa', attributes: [], owner: 'Ákos' },
-    'Krassó-Szőrény': { left: '453.5px', top: '331.5px', info: 'Krassó-Szőrény', attributes: ['vas-és fémipar', 'szén', 'vasérc'], owner: 'Samu' },
-    'Gömör-és-Kis-Hont': { left: '350.5px', top: '65px', info: 'Gömör-és-Kis-Hont', attributes: ['vasérc'], owner: null },
-    'Abaúj-Torna': { left: '395px', top: '75.5px', info: 'Abaúj-Torna', attributes: ['arany', 'vas-és fémipar'], owner: 'Zalán' },
-    'Túrócz': { left: '283.5px', top: '41.5px', info: 'Túrócz', attributes: ['fa'], owner: 'Geri' },
-    'Nagy-Küküllő': { left: '620.5px', top: '305px', info: ' Nagy-Küküllő ', attributes: ['fa', 'búza'], owner: null },
-    'Brassó': { left: '703px', top: '322px', info: 'Brassó', attributes: ['könnyűipar'], owner: 'Kolos' },    };
+        'Fiume - város': { left: '1.5px', top: '380.5px', info: 'Fiume - város', attributes: ['kikötő'], owner: 'Zente', hasFactory: true },
+        'Modrus-Fiume': { left: '1.5px', top: '360.5px', info: 'Modrus-Fiume', attributes: ['élelmiszeripar', 'gépgyártás', 'kikötő'], owner: 'Zente', hasFactory: false },
+        'Lika-Krbava': { left: '30.5px', top: '415.5px', info: 'Lika-Krbava', attributes: ['kikötő', 'fa'], owner: 'Zente', hasFactory: false },
+        'Zágráb': { left: '60.5px', top: '329.5px', info: 'Zágráb', attributes: ['könnyűipar', 'élelmiszeripar'], owner: 'Zente', hasFactory: true },
+        'Varasd': { left: '84.5px', top: '298.5px', info: 'Varasd', attributes: ['szőlő/bor', 'fa', 'szén'], owner: null, hasFactory: false },
+        'Belovár-Kőrós': { left: '127.5px', top: '317.5px', info: 'Belovár-Kőrós', attributes: ['élelmiszeripar', 'vas-és fémipar', 'szőlő/bor', 'fa', 'kukorica'], owner: 'Zente', hasFactory: true },
+        'Pozsega': { left: '154.5px', top: '366.5px', info: 'Pozsega', attributes: ['fa', 'búza', 'kukorica'], owner: 'Zente', hasFactory: false },
+        'Verőcze': { left: '187.5px', top: '342.5px', info: 'Verőcze', attributes: ['fa', 'búza'], owner: null, hasFactory: false },
+        'Szerém': { left: '261px', top: '391.5px', info: 'Szerém', attributes: ['szőlő/bor', 'fa', 'búza'], owner: 'Samu', hasFactory: true },
+        'Baranya': { left: '222.5px', top: '303.5px', info: 'Baranya', attributes: ['könnyűipar', 'vas-és fémipar', 'egyetem', 'szőlő/bor', 'szén'], owner: null, hasFactory: false },
+        'Tolna': { left: '239.5px', top: '258.5px', info: 'Tolna', attributes: ['szőlő/bor'], owner: null, hasFactory: false },
+        'Somogy': { left: '165.5px', top: '255.5px', info: 'Somogy', attributes: ['szőlő/bor', 'cukor', 'állat'], owner: null, hasFactory: false },
+        'Zala': { left: '122.5px', top: '232.5px', info: 'Zala', attributes: ['szőlő/bor'], owner: 'Geri', hasFactory: true },
+        'Vas': { left: '111.5px', top: '194px', info: 'Vas', attributes: ['gépgyártás', 'cukor', 'vasérc'], owner: 'Geri', hasFactory: true },
+        'Veszprém': { left: '188.5px', top: '193.5px', info: 'Veszprém', attributes: ['szőlő/bor', 'kukorica'], owner: 'Geri', hasFactory: false },
+        'Fejér': { left: '244.5px', top: '194.5px', info: 'Fejér', attributes: ['gépgyártás', 'búza', 'állat'], owner: null, hasFactory: false },
+        'Komárom': { left: '220.5px', top: '147.5px', info: 'Komárom', attributes: ['szőlő/bor', 'szén'], owner: 'Geri', hasFactory: true },
+        'Esztergom': { left: '264.5px', top: '149.5px', info: 'Esztergom', attributes: ['szén'], owner: 'Geri', hasFactory: false },
+        'Győr': { left: '197.5px', top: '161.5px', info: 'Győr', attributes: ['gépgyártás'], owner: 'Geri', hasFactory: true },
+        'Sopron': { left: '131.5px', top: '152.5px', info: 'Sopron', attributes: ['cukor'], owner: 'Geri', hasFactory: false },
+        'Moson': { left: '160px', top: '136.5px', info: 'Moson', attributes: ['gépgyártás', 'búza'], owner: 'Geri', hasFactory: false },
+        'Pozsony': { left: '171.5px', top: '89.5px', info: 'Pozsony', attributes: ['könnyűipar', 'egyetem', 'cukor'], owner: 'Geri', hasFactory: true },
+        'Nyitra': { left: '180.5px', top: '60.5px', info: 'Nyitra', attributes: ['cukor'], owner: 'Geri', hasFactory: false },
+        'Bars': { left: '257.5px', top: '79.5px', info: 'Bars', attributes: ['fa', 'búza'], owner: 'Geri', hasFactory: false },
+        'Hont': { left: '283.5px', top: '105.5px', info: 'Hont', attributes: ['élelmiszeripar', 'vas-és fémipar'], owner: null, hasFactory: false },
+        'Zólyom': { left: '300.96px', top: '64.5px', info: 'Zólyom', attributes: ['könnyűipar', 'arany'], owner: 'Geri', hasFactory: true },
+        'Trencsén': { left: '223.5px', top: '9.5px', info: 'Trencsén', attributes: ['állat', 'szén'], owner: 'Geri', hasFactory: false },
+        'Árva': { left: '310.5px', top: '1.5px', info: 'Árva', attributes: ['fa', 'szén'], owner: 'Geri', hasFactory: false },
+        'Liptó': { left: '310.5px', top: '34.5px', info: 'Liptó', attributes: ['fa'], owner: 'Geri', hasFactory: false },
+        'Szepes': { left: '367px', top: '15.5px', info: 'Szepes', attributes: ['arany', 'állat', 'vasérc'], owner: 'Zalán', hasFactory: true },
+        'Sáros': { left: '408px', top: '16.5px', info: 'Sáros', attributes: ['fa', 'arany'], owner: 'Zalán', hasFactory: false },
+        'Zemplén': { left: '423px', top: '22.5px', info: 'Zemplén', attributes: ['szőlő/bor'], owner: 'Boti', hasFactory: false },
+        'Ung': { left: '478.5px', top: '48px', info: 'Ung', attributes: ['fa', 'állat'], owner: null, hasFactory: false },
+        'Bereg': { left: '500px', top: '64.5px', info: 'Bereg', attributes: ['szőlő/bor', 'búza'], owner: 'Ákos', hasFactory: false },
+        'Szatmár': { left: '495.5px', top: '136.5px', info: 'Szatmár', attributes: ['búza', 'kukorica', 'állat'], owner: 'Ákos', hasFactory: false },
+        'Szabolcs': { left: '428.5px', top: '112.5px', info: 'Szabolcs', attributes: ['egyetem'], owner: 'Ákos', hasFactory: false },
+        'Hajdú': { left: '413.5px', top: '158.5px', info: 'Hajdú', attributes: ['könnyűipar', 'élelmiszeripar', 'gépgyártás', 'állat'], owner: null, hasFactory: false },
+        'Nógrád': { left: '301.5px', top: '92px', info: 'Nógrád', attributes: ['vas-és fémipar', 'szén', 'vasérc'], owner: null, hasFactory: false },
+        'Borsod': { left: '368.5px', top: '107.86px', info: 'Borsod', attributes: ['vas-és fémipar', 'szén', 'vasérc'], owner: 'Geri', hasFactory: true },
+        'Heves': { left: '342.5px', top: '139.5px', info: 'Heves', attributes: ['szőlő/bor', 'szén'], owner: null, hasFactory: false },
+        'Jász-Nagykun-Szolnok': { left: '344.5px', top: '185.5px', info: 'Jász-Nagykun-Szolnok', attributes: ['gépgyártás', 'búza', 'kukorica'], owner: null, hasFactory: false },
+        'Pest-Pilis-Solt-Kiskun': { left: '282.5px', top: '167px', info: 'Pest-Pilis-Solt-Kiskun', attributes: ['gépgyártás', 'egyetem', 'cukor', 'búza', 'kukorica'], owner: 'Barna', hasFactory: true },
+        'Csongrád': { left: '343.5px', top: '266px', info: 'Csongrád', attributes: ['könnyűipar', 'búza', 'állat'], owner: null, hasFactory: false },
+        'Csanád': { left: '387.5px', top: '287.5px', info: 'Csanád', attributes: ['cukor', 'búza', 'kukorica', 'állat'], owner: 'Samu', hasFactory: true },
+        'Békés': { left: '387px', top: '229.5px', info: 'Békés', attributes: ['búza', 'kukorica', 'állat'], owner: null, hasFactory: false },
+        'Bács-Bodrog': { left: '292.5px', top: '306.5px', info: 'Bács-Bodrog', attributes: ['szőlő/bor', 'cukor', 'búza', 'kukorica', 'állat'], owner: null, hasFactory: false },
+        'Torontál': { left: '368.5px', top: '318.5px', info: 'Torontál', attributes: ['búza', 'kukorica'], owner: 'Samu', hasFactory: false },
+        'Temes': { left: '417.5px', top: '325.5px', info: 'Temes', attributes: ['gépgyártás', 'szén'], owner: 'Samu', hasFactory: true },
+        'Hunyad': { left: '516.5px', top: '305px', info: 'Hunyad', attributes: ['vas-és fémipar', 'arany', 'állat', 'vasérc'], owner: 'Kolos', hasFactory: true },
+        'Arad': { left: '418.5px', top: '273px', info: 'Arad', attributes: ['gépgyártás', 'szőlő/bor', 'búza', 'állat'], owner: null, hasFactory: false },
+        'Bihar': { left: '430.92px', top: '191.5px', info: 'Bihar', attributes: ['élelmiszeripar', 'cukor', 'állat'], owner: null, hasFactory: false },
+        'Szilágy': { left: '508.5px', top: '185px', info: 'Szilágy', attributes: ['fa', 'búza', 'kukorica'], owner: null, hasFactory: false },
+        'Szolnok-Doboka': { left: '571.5px', top: '179.5px', info: 'Szolnok-Doboka', attributes: ['vas-és fémipar', 'fa', 'búza'], owner: null, hasFactory: false },
+        'Máramaros': { left: '559.5px', top: '78.5px', info: 'Máramaros', attributes: ['arany', 'állat'], owner: 'Ákos', hasFactory: false },
+        'Beszterce-Naszód': { left: '626px', top: '181px', info: 'Beszterce-Naszód', attributes: ['fa'], owner: 'Boti', hasFactory: false },
+        'Kolozs': { left: '531px', top: '233px', info: 'Kolozs', attributes: ['könnyűipar', 'egyetem'], owner: 'Kolos', hasFactory: true },
+        'Torda-Aranyos': { left: '533.5px', top: '268px', info: 'Torda-Aranyos', attributes: ['arany', 'állat'], owner: 'Kolos', hasFactory: false },
+        'Alsó-Fehér': { left: '550.5px', top: '291px', info: 'Alsó-Fehér', attributes: ['szőlő/bor', 'arany', 'állat'], owner: null, hasFactory: false },
+        'Szeben': { left: '585.5px', top: '332px', info: 'Szeben', attributes: ['vas-és fémipar', 'szén'], owner: 'Kolos', hasFactory: true },
+        'Fogaras': { left: '647px', top: '331.5px', info: 'Fogaras', attributes: ['állat'], owner: 'Boti', hasFactory: false },
+        'Kis-Küküllő': { left: '610.5px', top: '286.5px', info: 'Kis-Küküllő', attributes: ['szőlő/bor', 'búza'], owner: null, hasFactory: false },
+        'Udvarhely': { left: '665.5px', top: '269.5px', info: 'Udvarhely', attributes: ['búza', 'kukorica'], owner: 'Kolos', hasFactory: false },
+        'Háromszék': { left: '715px', top: '300.5px', info: 'Háromszék', attributes: ['fa'], owner: 'Kolos', hasFactory: false },
+        'Csík': { left: '694px', top: '220px', info: 'Csík', attributes: ['fa'], owner: 'Kolos', hasFactory: false },
+        'Maros-Torda': { left: '628.5px', top: '225.5px', info: 'Maros-Torda', attributes: ['könnyűipar', 'gépgyártás', 'állat'], owner: 'Kolos', hasFactory: true },
+        'Budapest': { left: '299.5px', top: '192px', info: 'Budapest', attributes: ['gépgyártás', 'egyetem', 'cukor', 'búza', 'kukorica'], owner: 'Barna', hasFactory: true },
+        'Ugocsa': { left: '537px', top: '121.5px', info: 'Ugocsa', attributes: [], owner: 'Ákos', hasFactory: false },
+        'Krassó-Szőrény': { left: '453.5px', top: '331.5px', info: 'Krassó-Szőrény', attributes: ['vas-és fémipar', 'szén', 'vasérc'], owner: 'Samu', hasFactory: true },
+        'Gömör-és-Kis-Hont': { left: '350.5px', top: '65px', info: 'Gömör-és-Kis-Hont', attributes: ['vasérc'], owner: null, hasFactory: false },
+        'Abaúj-Torna': { left: '395px', top: '75.5px', info: 'Abaúj-Torna', attributes: ['arany', 'vas-és fémipar'], owner: 'Zalán', hasFactory: false },
+        'Túrócz': { left: '283.5px', top: '41.5px', info: 'Túrócz', attributes: ['fa'], owner: 'Geri', hasFactory: false },
+        'Nagy-Küküllő': { left: '620.5px', top: '305px', info: 'Nagy-Küküllő', attributes: ['fa', 'búza'], owner: null, hasFactory: false },
+        'Brassó': { left: '703px', top: '322px', info: 'Brassó', attributes: ['könnyűipar'], owner: 'Kolos', hasFactory: true },
+    };
 
     const tooltip = document.getElementById('tooltip');
 
@@ -233,6 +240,23 @@
                 container.classList.add('county-svg');
                 container.setAttribute('data-county', county);
                 container.appendChild(svgElement);
+
+                // Gyár ikon hozzáadása, ha van gyár
+                if (countyPositions[county].hasFactory) {
+                    fetch('svg/gyar.svg')
+                        .then(response => response.text())
+                        .then(factorySvgData => {
+                            const factorySvgDocument = parser.parseFromString(factorySvgData, "image/svg+xml");
+                            const factorySvgElement = factorySvgDocument.querySelector("svg");
+                            factorySvgElement.style.position = "absolute";
+                            factorySvgElement.style.left = "10px"; // Pozíció beállítása
+                            factorySvgElement.style.top = "10px"; // Pozíció beállítása
+                            factorySvgElement.style.width = "20px"; // Méret beállítása
+                            factorySvgElement.style.height = "20px"; // Méret beállítása
+                            container.appendChild(factorySvgElement);
+                        })
+                        .catch(error => console.error('Hiba történt a gyár ikon betöltésekor:', error));
+                }
 
                 container.addEventListener('mouseenter', () => {
                     tooltip.style.display = 'block';
@@ -313,5 +337,3 @@
 
 </body>
 </html>
-
-
