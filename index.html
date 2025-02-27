@@ -106,8 +106,6 @@
             <option value="Kolos">Kolos</option>
             <option value="Zente">Zente</option>
             <option value="Ákos">Ákos</option>
-            <option value="Boti">Boti</option>
-            <option value="Zalán">Zalán</option>
             <option value="Geri">Geri</option>
             <option value="Samu">Samu</option>
             <option value="Barna">Barna</option>
@@ -122,10 +120,8 @@
 <div id="legend">
     <strong>Színmagyarázat:</strong>
     <div><span style="background-color: #8ed873;"></span> Zente</div>
-    <div><span style="background-color: #a979c8;"></span> Zalán</div>
     <div><span style="background-color: #cc9900;"></span> Geri</div>
     <div><span style="background-color: #ff6600;"></span> Samu</div>
-    <div><span style="background-color: #c00000;"></span> Boti</div>
     <div><span style="background-color: #0000cc;"></span> Kolos</div>
     <div><span style="background-color: #5e3792;"></span> Ákos</div>
     <div><span style="background-color: #37a1c0;"></span> Barna</div>
@@ -135,10 +131,8 @@
     // Tulajdonos színek
     const ownerColors = {
         'Zente': '#8ed873',
-        'Zalán': '#a979c8',
         'Geri': '#cc9900',
         'Samu': '#ff6600',
-        'Boti': '#c00000',
         'Kolos': '#0000cc',
         'Ákos': '#5e3792',
         'Barna': '#37a1c0',
@@ -174,9 +168,9 @@
         'Trencsén': { left: '223.5px', top: '9.5px', info: 'Trencsén', attributes: ['állat', 'szén'], owner: 'Geri', hasFactory: false },
         'Árva': { left: '310.5px', top: '1.5px', info: 'Árva', attributes: ['fa', 'szén'], owner: 'Geri', hasFactory: false },
         'Liptó': { left: '310.5px', top: '34.5px', info: 'Liptó', attributes: ['fa'], owner: 'Geri', hasFactory: false },
-        'Szepes': { left: '367px', top: '15.5px', info: 'Szepes', attributes: ['arany', 'állat', 'vasérc'], owner: 'Zalán', hasFactory: false },
-        'Sáros': { left: '408px', top: '16.5px', info: 'Sáros', attributes: ['fa', 'arany'], owner: 'Zalán', hasFactory: false },
-        'Zemplén': { left: '423px', top: '22.5px', info: 'Zemplén', attributes: ['szőlő/bor'], owner: 'Boti', hasFactory: false },
+        'Szepes': { left: '367px', top: '15.5px', info: 'Szepes', attributes: ['arany', 'állat', 'vasérc'], owner: 'Ákos', hasFactory: false },
+        'Sáros': { left: '408px', top: '16.5px', info: 'Sáros', attributes: ['fa', 'arany'], owner: 'Ákos', hasFactory: false },
+        'Zemplén': { left: '423px', top: '22.5px', info: 'Zemplén', attributes: ['szőlő/bor'], owner: 'Ákos', hasFactory: false },
         'Ung': { left: '478.5px', top: '48px', info: 'Ung', attributes: ['fa', 'állat'], owner: null, hasFactory: false },
         'Bereg': { left: '500px', top: '64.5px', info: 'Bereg', attributes: ['szőlő/bor', 'búza'], owner: 'Ákos', hasFactory: false },
         'Szatmár': { left: '495.5px', top: '136.5px', info: 'Szatmár', attributes: ['búza', 'kukorica', 'állat'], owner: 'Ákos', hasFactory: false },
@@ -199,12 +193,12 @@
         'Szilágy': { left: '508.5px', top: '185px', info: 'Szilágy', attributes: ['fa', 'búza', 'kukorica'], owner: null, hasFactory: false },
         'Szolnok-Doboka': { left: '571.5px', top: '179.5px', info: 'Szolnok-Doboka', attributes: ['vas-és fémipar', 'fa', 'búza'], owner: null, hasFactory: false },
         'Máramaros': { left: '559.5px', top: '78.5px', info: 'Máramaros', attributes: ['arany', 'állat'], owner: 'Ákos', hasFactory: false },
-        'Beszterce-Naszód': { left: '626px', top: '181px', info: 'Beszterce-Naszód', attributes: ['fa'], owner: 'Boti', hasFactory: false },
+        'Beszterce-Naszód': { left: '626px', top: '181px', info: 'Beszterce-Naszód', attributes: ['fa'], owner: 'Ákos', hasFactory: false },
         'Kolozs': { left: '531px', top: '233px', info: 'Kolozs', attributes: ['könnyűipar', 'egyetem'], owner: 'Kolos', hasFactory: false },
         'Torda-Aranyos': { left: '533.5px', top: '268px', info: 'Torda-Aranyos', attributes: ['arany', 'állat'], owner: 'Kolos', hasFactory: false },
         'Alsó-Fehér': { left: '550.5px', top: '291px', info: 'Alsó-Fehér', attributes: ['szőlő/bor', 'arany', 'állat'], owner: null, hasFactory: false },
         'Szeben': { left: '585.5px', top: '332px', info: 'Szeben', attributes: ['vas-és fémipar', 'szén'], owner: 'Kolos', hasFactory: false },
-        'Fogaras': { left: '647px', top: '331.5px', info: 'Fogaras', attributes: ['állat'], owner: 'Boti', hasFactory: false },
+        'Fogaras': { left: '647px', top: '331.5px', info: 'Fogaras', attributes: ['állat'], owner: 'Ákos', hasFactory: false },
         'Kis-Küküllő': { left: '610.5px', top: '286.5px', info: 'Kis-Küküllő', attributes: ['szőlő/bor', 'búza'], owner: null, hasFactory: false },
         'Udvarhely': { left: '665.5px', top: '269.5px', info: 'Udvarhely', attributes: ['búza', 'kukorica'], owner: 'Kolos', hasFactory: false },
         'Háromszék': { left: '715px', top: '300.5px', info: 'Háromszék', attributes: ['fa'], owner: 'Kolos', hasFactory: false },
@@ -214,7 +208,7 @@
         'Ugocsa': { left: '537px', top: '121.5px', info: 'Ugocsa', attributes: [], owner: 'Ákos', hasFactory: false },
         'Krassó-Szőrény': { left: '453.5px', top: '331.5px', info: 'Krassó-Szőrény', attributes: ['vas-és fémipar', 'szén', 'vasérc'], owner: 'Samu', hasFactory: false },
         'Gömör-és-Kis-Hont': { left: '350.5px', top: '65px', info: 'Gömör-és-Kis-Hont', attributes: ['vasérc'], owner: null, hasFactory: false },
-        'Abaúj-Torna': { left: '395px', top: '75.5px', info: 'Abaúj-Torna', attributes: ['arany', 'vas-és fémipar'], owner: 'Zalán', hasFactory: false },
+        'Abaúj-Torna': { left: '395px', top: '75.5px', info: 'Abaúj-Torna', attributes: ['arany', 'vas-és fémipar'], owner: 'Ákos', hasFactory: false },
         'Túrócz': { left: '283.5px', top: '41.5px', info: 'Túrócz', attributes: ['fa'], owner: 'Geri', hasFactory: false },
         'Nagy-Küküllő': { left: '620.5px', top: '305px', info: 'Nagy-Küküllő', attributes: ['fa', 'búza'], owner: null, hasFactory: false },
         'Brassó': { left: '703px', top: '322px', info: 'Brassó', attributes: ['könnyűipar'], owner: 'Kolos', hasFactory: false },
